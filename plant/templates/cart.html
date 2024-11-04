@@ -10,10 +10,10 @@
         <table class="table table-striped table-hover">
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Quantity</th>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Preço</th>
+              <th>Quantidade</th>
               <th>Total</th>
             </tr>
           </thead>
@@ -26,12 +26,12 @@
       </div>
       <div class="column col-auto mt-2 pt-2">
         <div class="container bg-gray p-2">
-          <h5>Total Amount: Rs. {% include 'parts/total_amount.html' %}</h5>
-          <a href="{{url_for('cart.checkout') }}" class="btn btn-primary">Checkout</a> 
+          <h5>Total da Compra: R$ {% include 'parts/total_amount.html' %}</h5>
+          <a href="{{url_for('cart.checkout') }}" class="btn btn-primary">Finalizar</a> 
         </div>
       </div>
     {% else %}
-      <h4>You have no items in cart.</h4>
+      <h4>Você não tem itens no carrinho!</h4>
     {% endif %}
   </div>
 </div>

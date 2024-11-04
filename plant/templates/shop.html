@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}| Shop{% endblock title %}
+{% block title %}| Itens{% endblock title %}
 
 {% block content %}
   <div class="my-2 py-2">
     <div class="dropdown text-uppercase">
       <a href="#" class="btn bg-link dropdown-toggle" tabindex="0">
-        CATEGORIES <i class="icon icon-caret"></i>
+        CATEGORIAS <i class="icon icon-caret"></i>
       </a>
       <ul class="menu">
         {% for category in categories %}
@@ -22,7 +22,7 @@
         {% include 'parts/item.html' %}
       {% else %}
       <div class="text-uppercase m-2 p-2">
-        <h4>Nothing to display!</h4>
+        <h4>Não temos este item!</h4>
       </div>
       {% endfor %}
     </div>

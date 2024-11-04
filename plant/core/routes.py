@@ -22,7 +22,7 @@ def admin_login():
         login_user(user)
         return redirect('/admin')
     else:
-        flash('Please check your username or password.', category='danger')
+        flash('Por favor verifique seu usuário ou sua senha!', category='danger')
         return redirect('/admin')
         
 @core.get('/admin-logout')

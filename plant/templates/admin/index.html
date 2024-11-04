@@ -4,34 +4,34 @@
 
 {% if current_user.is_authenticated and current_user.is_superuser %}
 <div class="jumbotron">
-    <h1 class="display-4">Plant Admin</h1>
-    <p class="lead">Gardening is a way to a healthy life.</p>
+    <h1 class="display-4">Plantas.com Admin</h1>
+    <p class="lead">Jardinar é um caminho para uma vida saudável.</p>
     <hr class="my-4">
-    <p>You're an administrative user that's why you're accessing this!</p>
+    <p>Você é um usuário administrativo e é por isso que está acessando isso!</p>
     <p class="lead">
-        <a class="btn btn-danger btn-lg" href="{{url_for('core.admin_logout')}}" role="button">Logout</a>
-        <a href="{{url_for('core.home')}}" class="btn btn-success btn-lg">Go to Plant</a>
+        <a class="btn btn-danger btn-lg" href="{{url_for('core.admin_logout')}}" role="button">Sair</a>
+        <a href="{{url_for('core.home')}}" class="btn btn-success btn-lg">Ir para Plantas.com</a>
     </p>
 </div>
 {% else %}
 <div class="jumbotron">
-    <h1 class="display-4">Plant Admin Login</h1>
-    <p class="lead">Gardening is a way to a healthy life.</p>
+    <h1 class="display-4">Login Plantas Admin</h1>
+    <p class="lead">Jardinar é um caminho para uma vida saudável.</p>
     <hr class="my-4">
-    <p>You're not logged in as an Administrative user. Please login.</p>
+    <p>Você é um usuário administrativo e é por isso que está acessando isso!</p>
     <form method="post" action="{{url_for('core.admin_login')}}">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         <div class="form-group">
-          <label for="exampleInputEmail1">Username</label>
-          <input name="username" type="text" class="form-control" placeholder="Enter username" required>
-          <small class="form-text text-muted">Put your administrative username.</small>
+          <label for="exampleInputEmail1">Usuário</label>
+          <input name="username" type="text" class="form-control" placeholder="Seu usuário" required>
+          <small class="form-text text-muted">Coloque seu nome de usuário administrativo.</small>
         </div>
         <div class="form-group">
           <label>Password</label>
           <input name="password" type="password" class="form-control" placeholder="Password" required>
         </div>
-        <button type="submit" class="btn btn-primary">Login as Admin</button>
-        <a href="{{url_for('core.home')}}" class="btn btn-success">Go to Plant</a>
+        <button type="submit" class="btn btn-primary">Faça login como administrador</button>
+        <a href="{{url_for('core.home')}}" class="btn btn-success">Ir para Plantas.com</a>
     </form>
 </div>
 {% endif %}

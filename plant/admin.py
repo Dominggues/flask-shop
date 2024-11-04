@@ -18,7 +18,7 @@ class DashboardView(AdminIndexView):
     def is_visible(self):
         return False
 
-admin = Admin(app, name='Plant Admin', template_mode='bootstrap4', index_view=DashboardView())
+admin = Admin(app, name='Plantas Admin', template_mode='bootstrap4', index_view=DashboardView())
 
 media_path = os.path.join(os.path.dirname(__file__), 'images/')
 
@@ -46,6 +46,12 @@ class CategoryAdmin(ModelView):
     column_filters = ['name']
     form_excluded_columns = ['products']
     edit_modal = True
+    
+    column_labels = {
+        'name': 'Nome',
+        'slug': 'Identificador',
+        'products': 'Produtos'
+    }
 
     def is_accessible(self):
         return True if current_user.is_authenticated and current_user.is_superuser else False
@@ -62,7 +68,18 @@ class ProductAdmin(ModelView):
     column_editable_list = ['name', 'category', 'price', 'description', 'how_to_maintain', 'where_to_keep', 'image']
     column_exclude_list = ['how_to_maintain', 'where_to_keep']
     can_view_details = True
-
+    
+    column_labels = {
+        'name': 'Nome',
+        'category': 'Categoria',
+        'slug': 'Identificador',
+        'price': 'Preço',
+        'description': 'Descrição',
+        'how_to_maintain': 'Como Manter',
+        'where_to_keep': 'Onde Armazenar',
+        'image': 'Imagem'
+    }
+    
     form_extra_fields = {
         'image': ImageUploadField(
             'Image', 
@@ -95,6 +112,20 @@ class OrderAdmin(ModelView):
     inline_models = (OrderItem,) 
     can_delete = False
     can_view_details = True
+    
+    column_labels = {
+        'full_name': 'Nome Completo',
+        'email_address': 'Email',
+        'city': 'Cidade',
+        'postal_code': 'CEP',
+        'state': 'Estado',
+        'phone_no': 'Telefone',
+        'nearest_landmark': 'Ponto de Referência',
+        'created_at': 'Data de Criação',
+        'is_shipped': 'Enviado',
+        'total_amount': 'Valor Total'
+    }
+    
 
     def is_accessible(self):
         return True if current_user.is_authenticated and current_user.is_superuser else False
@@ -112,7 +143,7 @@ class MediaAdmin(FileAdmin):
     def inaccessible_callback(self, name, **kwargs):
         return redirect('/admin')
 
-admin.add_view(ProductAdmin(Product, db.session))
-admin.add_view(CategoryAdmin(Category, db.session))
-admin.add_view(OrderAdmin(Order, db.session))
-admin.add_view(MediaAdmin(media_path, '/images/', name='Media Files'))
+admin.add_view(ProductAdmin(Product, db.session, name='Produtos'))
+admin.add_view(CategoryAdmin(Category, db.session, name='Categorias'))
+admin.add_view(OrderAdmin(Order, db.session, name='Pedidos'))
+admin.add_view(MediaAdmin(media_path, '/images/', name='Arquivo Midia'))
