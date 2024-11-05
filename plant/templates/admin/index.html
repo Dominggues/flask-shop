@@ -18,7 +18,7 @@
     <h1 class="display-4">Login Plantas Admin</h1>
     <p class="lead">Jardinar é um caminho para uma vida saudável.</p>
     <hr class="my-4">
-    <p>Você é um usuário administrativo e é por isso que está acessando isso!</p>
+    <p>Você é um usuário administrativo!</p>
     <form method="post" action="{{url_for('core.admin_login')}}">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         <div class="form-group">
@@ -27,8 +27,8 @@
           <small class="form-text text-muted">Coloque seu nome de usuário administrativo.</small>
         </div>
         <div class="form-group">
-          <label>Password</label>
-          <input name="password" type="password" class="form-control" placeholder="Password" required>
+          <label>Senha</label>
+          <input name="password" type="password" class="form-control" placeholder="Senha" required>
         </div>
         <button type="submit" class="btn btn-primary">Faça login como administrador</button>
         <a href="{{url_for('core.home')}}" class="btn btn-success">Ir para Plantas.com</a>
