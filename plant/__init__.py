@@ -54,8 +54,8 @@ from flask.cli import with_appcontext
 
 @click.command(name="createsuperuser")
 @with_appcontext
-@click.argument("username", nargs=1)
-@click.argument("password", nargs=1)
+@click.argument("admin", nargs=1)
+@click.argument("admin", nargs=1)
 def create_superuser(username, password): # flask createsuperuser name pasword
     user = User(username=username, hash_password=password, is_superuser=True)
     db.session.add(user)
